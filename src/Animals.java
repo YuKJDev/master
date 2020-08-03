@@ -13,8 +13,5 @@ abstract class Animals {
     }
 
     abstract void run(int length);
-
-    abstract void swim(int length);
-
     abstract void jump(double height);
     }

@@ -28,12 +28,6 @@ public class Cat extends  Animals {
 
     }
 
-    @Override
-    void swim(int length) {
-        System.out.println(String.format("Кот/кошка [%s] утонул[а] ", getName()));
-        System.out.println("swim: false");
-
-    }
 
     @Override
     void jump(double height) {
