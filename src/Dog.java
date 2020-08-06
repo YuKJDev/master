@@ -8,7 +8,7 @@ public class Dog extends Waterfowl {
         this.breed = breed;
     }
 
-    public String getBreed() {
+    private String getBreed() {
         return breed;
     }
 
@@ -70,6 +70,11 @@ public class Dog extends Waterfowl {
             System.out.println("jump: false");
         }
 
+
+    }
+
+    @Override
+    void eat() {
 
     }
 

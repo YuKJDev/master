@@ -2,22 +2,27 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-        Animals cat = new Cat("Барсик");
-        Animals cat2 = new Cat("Мурка");
-        Animals cat3 = new Cat("Дарсик");
+        Animals cat = new Cat("Барсик", 100);
+        Animals cat2 = new Cat("Мурка", 50);
+        Animals cat3 = new Cat("Дарсик", 20);
         cat.run(100);
+        cat.eat();
         cat.jump(-100);
+
 
 
         System.out.println("//-----------------------------//");
 
         cat2.run(10);
+        cat2.eat();
         cat2.jump(1);
+
 
 
         System.out.println("//-----------------------------//");
 
         cat3.run(300);
+        cat3.eat();
         cat3.jump(3);
 
 
