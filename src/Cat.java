@@ -124,15 +124,17 @@ public class Cat extends  Animals {
 
                 if (plate.getCountEat() != 0) {
                     countEat = plate.getCountEat();
+                    plate.setCountEat(countEat - (getGET_MAX_SATIETY() - getAppetite()));
                     for (int i = getAppetite(); i <= getGET_MAX_SATIETY(); i++) {
+
                         setAppetite(i);
                         System.out.println(String.format("Кот/кошка [%s] поел(-а), сытость %d%% ", getName(), getAppetite()));
-                        thisCatappetite = getAppetite();
+                      //  thisCatappetite = getAppetite();
                         //    for (int j = plate.getCountEat(); j >= 0; j -= 10) {
 
-                        plate.setCountEat(countEat - thisCatappetite);
 
                   }
+
                         System.out.println("В тарелке осталось: " + plate.getCountEat() + " еды");
 
 
