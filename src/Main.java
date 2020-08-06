@@ -1,30 +1,27 @@
 import java.awt.*;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        Animals cat = new Cat("Барсик", 100);
-        Animals cat2 = new Cat("Мурка", 50);
-        Animals cat3 = new Cat("Дарсик", 20);
-        cat.run(100);
-        cat.eat();
-        cat.jump(-100);
+        Cat[] cats = new Cat[10];
+        Cat cat = null;
+        int length = 0;
+        double height = 0;
+       while (true){
 
+            for (int i = 1; i < cats.length; i++) {
+                cats[i] = new Cat("Кошак №" + i);
+                cat = cats[i];
+                length = getNumber();
+                height = getNumber();
+                cat.setAppetite(rCatAppetite());
+                cat.run(length);
+                cat.eat();
+                cat.jump(height);
 
-
-        System.out.println("//-----------------------------//");
-
-        cat2.run(10);
-        cat2.eat();
-        cat2.jump(1);
-
-
-
-        System.out.println("//-----------------------------//");
-
-        cat3.run(300);
-        cat3.eat();
-        cat3.jump(3);
-
+            }
+             break;
+        }
 
         System.out.println("//-----------------------------//");
 
@@ -51,4 +48,25 @@ public class Main {
 
 
     }
+    static int getNumber () {
+        int min = -200;
+        int max = 200;
+        int diff = max - min;
+        Random random = new Random();
+        int i = random.nextInt(diff + 1);
+        i += min;
+        return i;
+    }
+
+    static int rCatAppetite () {
+        int min = 0;
+        int max = 100;
+        int diff = max - min;
+        Random random = new Random();
+        int i = random.nextInt(diff + 1);
+        i += min;
+        return i;
+    }
+
+
 }

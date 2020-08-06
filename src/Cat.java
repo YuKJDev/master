@@ -7,9 +7,9 @@ public class Cat extends  Animals {
     private int appetite; //добавим нашим котикам свойство аппетит.
     private  final int GET_MAX_SATIETY = 100; //если аппетит достиг этого значения то котик сытый
 
-    public Cat(String name, int appetite) {
+    public Cat(String name) {
         super(name);
-        this.appetite = appetite;
+
     }
 
     @Override
@@ -95,7 +95,7 @@ public class Cat extends  Animals {
                 break;
             } else {
                 if (plate.getCountEat() == 100) {
-                    for (int i = getAppetite(); i <= GET_MAX_SATIETY; i += 10) {
+                    for (int i = getAppetite(); i <= GET_MAX_SATIETY; i++) {
                         setAppetite(i);
                         System.out.println(String.format("Кот/кошка [%s] поел(-а), сытость %d%% ", getName(), getAppetite()));
                         thisCatappetite = getAppetite();
