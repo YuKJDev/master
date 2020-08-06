@@ -3,25 +3,25 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        Cat[] cats = new Cat[10];
+        Cat[] cats = new Cat[5];
         Cat cat = null;
         int length = 0;
         double height = 0;
-       while (true){
+       do{
 
-            for (int i = 1; i < cats.length; i++) {
+            for (int i = 1; i < cats.length-1; i++) {
                 cats[i] = new Cat("Кошак №" + i);
                 cat = cats[i];
-                length = getNumber();
-                height = getNumber();
-                cat.setAppetite(rCatAppetite());
+                length = getData(cat.getMIN_RUN_LENGTH(), cat.getMAX_RUN_LENGTH());
+                height = getData(cat.getMIN_JUMP_HEIGTH(), cat.getMAX_JUMP_HEIGTH());
+                cat.setAppetite(getData(cat.getGET_MIN_SATIETY(), cat.getGET_MAX_SATIETY()));
                 cat.run(length);
                 cat.eat();
                 cat.jump(height);
 
             }
              break;
-        }
+        }while (true);
 
         System.out.println("//-----------------------------//");
 
@@ -48,22 +48,19 @@ public class Main {
 
 
     }
-    static int getNumber () {
-        int min = -200;
-        int max = 200;
+    static int getData (int min, int max) {
+
         int diff = max - min;
         Random random = new Random();
         int i = random.nextInt(diff + 1);
         i += min;
         return i;
     }
+    static double getData (double min, double max) {
 
-    static int rCatAppetite () {
-        int min = 0;
-        int max = 100;
-        int diff = max - min;
+        double diff = max - min;
         Random random = new Random();
-        int i = random.nextInt(diff + 1);
+        double i = random.nextDouble();
         i += min;
         return i;
     }

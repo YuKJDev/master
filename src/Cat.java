@@ -2,10 +2,14 @@ import java.util.Scanner;
 import java.util.Timer;
 
 public class Cat extends  Animals {
-    private final int MAX_RUN_LENGTH = 200;
-    private final double MAX_JUMP_HEIGTH = 2;
-    private int appetite; //добавим нашим котикам свойство аппетит.
+    private  final int MAX_RUN_LENGTH = 200;
+    private  final double MAX_JUMP_HEIGTH = 2;
     private  final int GET_MAX_SATIETY = 100; //если аппетит достиг этого значения то котик сытый
+    private  final int MIN_RUN_LENGTH = -200;
+    private  final double MIN_JUMP_HEIGTH = -2;
+    private  final int GET_MIN_SATIETY = 0; //если аппетит достиг этого значения то котик сытый
+
+    private int appetite; //добавим нашим котикам свойство аппетит.
 
     public Cat(String name) {
         super(name);
@@ -100,7 +104,7 @@ public class Cat extends  Animals {
                         System.out.println(String.format("Кот/кошка [%s] поел(-а), сытость %d%% ", getName(), getAppetite()));
                         thisCatappetite = getAppetite();
                     //    for (int j = plate.getCountEat(); j >= 0; j -= 10) {
-                            plate.setCountEat(100 - thisCatappetite);
+                            plate.setCountEat(100 - i);
 
 
                      //   }
@@ -110,7 +114,7 @@ public class Cat extends  Animals {
                 } else if (plate.getCountEat() < thisCatappetite){
                    System.out.println("Недостаточно еды в миске, добавить еды? y/n");
                    answer = scanner.nextLine();
-                   if (answer.equals("y")) {
+                   if (answer.equalsIgnoreCase("y")) {
                        plate.run(thisCatappetite);
                        continue;
                    } else {
@@ -131,4 +135,28 @@ public class Cat extends  Animals {
             }
         }
     }
- }
+
+    public int getMAX_RUN_LENGTH() {
+        return MAX_RUN_LENGTH;
+    }
+
+    public double getMAX_JUMP_HEIGTH() {
+        return MAX_JUMP_HEIGTH;
+    }
+
+    public int getGET_MAX_SATIETY() {
+        return GET_MAX_SATIETY;
+    }
+
+    public int getMIN_RUN_LENGTH() {
+        return MIN_RUN_LENGTH;
+    }
+
+    public double getMIN_JUMP_HEIGTH() {
+        return MIN_JUMP_HEIGTH;
+    }
+
+    public int getGET_MIN_SATIETY() {
+        return GET_MIN_SATIETY;
+    }
+}
