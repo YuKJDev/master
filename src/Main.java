@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -7,18 +8,44 @@ public class Main {
         Cat cat = null;
         int length = 0;
         double height = 0;
+        Plate plate = new Plate(0);
+        int countEat = plate.getCount();
+        String answer;
+        Scanner scanner = new Scanner(System.in);
+
        do{
 
-            for (int i = 1; i < cats.length; i++) {
-                cats[i] = new Cat("Кошак №" + i);
+             for (int i = 1; i < cats.length; i++) {
+                cats[i] = new Cat("Кошак №" + i, true);
 
                 cat = cats[i];
                 length = getData(cat.getMIN_RUN_LENGTH(), cat.getMAX_RUN_LENGTH());
                 height = getData(cat.getMIN_JUMP_HEIGTH(), cat.getMAX_JUMP_HEIGTH());
-                cat.setAppetite(getData(cat.getGET_MIN_SATIETY(), cat.getGET_MAX_SATIETY()));
-             //   cat.setAppetite(100);
                 cat.run(length);
-                cat.eat();
+                do {
+                    if (countEat > 0) {
+                        if (cat.isHungry()) {
+                            cat.eat();
+                            countEat -= 10;
+                            plate.setCount(countEat);
+                            System.out.println(String.format("%d осталось еды в миске. ", plate.getCount()));
+                            break;
+                        }
+                    } else {
+                        if (plate.getCount() == 0) {
+                            System.out.println("Недостаточно еды в миске, добавить еды? y/n");
+                            answer = scanner.nextLine();
+                            if (answer.equalsIgnoreCase("y")) {
+                                plate.setCount(100);
+                                countEat = plate.getCount();
+
+                            } else {
+                                System.out.println("Покормите котэ!");
+                                break;
+                            }
+                        }
+                    }
+                } while (true);
                 cat.jump(height);
 
             }
@@ -66,6 +93,7 @@ public class Main {
         i += min;
         return i;
     }
+
 
 
 }
