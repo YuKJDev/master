@@ -78,14 +78,9 @@ public class Cat extends  Animals {
           if (isHungry()) {
               System.out.println(String.format("%s поел. ", getName()));
               setHungry(false);
-
           } else {
               System.out.println(String.format("%s не голоден. ", getName()));
-
-
-          }
-
-
+        }
 
     }
 
