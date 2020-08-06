@@ -16,12 +16,5 @@ class MyTimerTask extends TimerTask {
 
     }
 
-    private void completeTask() {
-        try {
-            // допустим, выполнение займет 20 секунд
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+
 }

@@ -9,7 +9,7 @@ public class Main {
         double height = 0;
        do{
 
-            for (int i = 1; i < cats.length-1; i++) {
+            for (int i = 1; i < cats.length; i++) {
                 cats[i] = new Cat("Кошак №" + i);
                 cat = cats[i];
                 length = getData(cat.getMIN_RUN_LENGTH(), cat.getMAX_RUN_LENGTH());
