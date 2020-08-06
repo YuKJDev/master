@@ -122,7 +122,7 @@ public class Cat extends  Animals {
                 break;
             } else {
 
-                if (plate.getCountEat() != 0) {
+                if (plate.getCountEat() >= 0) {
                     countEat = plate.getCountEat();
                     plate.setCountEat(countEat - (getGET_MAX_SATIETY() - getAppetite()));
                     for (int i = getAppetite(); i <= getGET_MAX_SATIETY(); i++) {

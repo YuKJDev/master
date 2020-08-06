@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        Cat[] cats = new Cat[5];
+        Cat[] cats = new Cat[100];
         Cat cat = null;
         int length = 0;
         double height = 0;
