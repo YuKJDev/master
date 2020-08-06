@@ -74,10 +74,10 @@ public class Cat extends  Animals {
     // покормим наших котов
     @Override
     public void eat() {
+
         String answer;
         Scanner scanner = new Scanner(System.in);
         Plate plate = new Plate();
-        int thisCatappetite;
 
         Timer timer = new Timer(getName());
         MyTimerTask timerTask = new MyTimerTask();
@@ -90,8 +90,7 @@ public class Cat extends  Animals {
 
                 //  thisCatappetite = getAppetite();
                 countEat = plate.getCountEat();
-              
-
+                if (countEat > 0)
                 System.out.println("В тарелке " + countEat);
                 if (countEat == 0 ) {
                     System.out.println("Недостаточно еды в миске, добавить еды? y/n");
@@ -111,31 +110,39 @@ public class Cat extends  Animals {
                 System.out.println(String.format("Кот/кошка [%s] проголодался(-лась) на %d%% ", getName(),
                         getGET_MAX_SATIETY()-getAppetite()));
 
+
+                    System.out.println(String.format("Кот/кошка [%s] голоден(-на)", getName()));
+
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             if (getAppetite() == GET_MAX_SATIETY) {
                 System.out.println(String.format("Кот/кошка [%s] не голоден(-дна) %d%% ", getName(),
                         getAppetite()));
+
                 System.out.println("eat: false");
                 timer.cancel();
                 break;
             } else {
 
-                if (plate.getCountEat() >= 0) {
+                if (plate.getCountEat() > 0) {
+
                     countEat = plate.getCountEat();
-                    plate.setCountEat(countEat - (getGET_MAX_SATIETY() - getAppetite()));
-                    for (int i = getAppetite(); i <= getGET_MAX_SATIETY(); i++) {
+                    if (countEat >= 0) {
+                        plate.setCountEat(countEat - (getGET_MAX_SATIETY() - getAppetite()));
+                        for (int i = getAppetite(); i <= getGET_MAX_SATIETY(); i++) {
 
-                        setAppetite(i);
-                        System.out.println(String.format("Кот/кошка [%s] поел(-а), сытость %d%% ", getName(), getAppetite()));
-                      //  thisCatappetite = getAppetite();
-                        //    for (int j = plate.getCountEat(); j >= 0; j -= 10) {
+                            setAppetite(i);
+                            System.out.println(String.format("Кот/кошка [%s] поел(-а), сытость %d%% ", getName(), getAppetite()));
+                            //  thisCatappetite = getAppetite();
+                            //    for (int j = plate.getCountEat(); j >= 0; j -= 10) {
 
 
-                  }
+                        }
 
                         System.out.println("В тарелке осталось: " + plate.getCountEat() + " еды");
+                    }
 
 
                    // }
