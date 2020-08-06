@@ -74,18 +74,18 @@ public class Cat extends  Animals {
     // покормим наших котов
     @Override
     public void eat() {
-     do {
+
           if (isHungry()) {
               System.out.println(String.format("%s поел. ", getName()));
               setHungry(false);
 
           } else {
               System.out.println(String.format("%s не голоден. ", getName()));
-              break;
+
 
           }
 
-        } while (true) ;
+
 
     }
 
