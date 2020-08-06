@@ -59,9 +59,9 @@ public class Main {
     }
     static double getData (double min, double max) {
 
-       // double diff = max - min;
+        double diff = max - min;
         Random random = new Random();
-        double i = random.nextDouble();
+        double i = random.nextInt((int)diff);
         i += min;
         return i;
     }
