@@ -1,6 +1,11 @@
 public class Plate {
-private int countEat;
-private final int MAX_COUNT_EAT = 100;
+private static int countEat;
+
+    public int getMAX_COUNT_EAT() {
+        return MAX_COUNT_EAT;
+    }
+
+    private final int MAX_COUNT_EAT = 1000;
 
     public int getCountEat() {
         return countEat;
@@ -11,7 +16,7 @@ private final int MAX_COUNT_EAT = 100;
     }
 
     public  void run (int countEat) {
-       while (countEat <= MAX_COUNT_EAT) {
+       while (countEat <= getMAX_COUNT_EAT()) {
            setCountEat(countEat++);
        }
 

@@ -36,7 +36,6 @@ public class Cat extends  Animals {
            System.out.println("run: false");
        }
 
-
     }
 
 
@@ -78,52 +77,84 @@ public class Cat extends  Animals {
         String answer;
         Scanner scanner = new Scanner(System.in);
         Plate plate = new Plate();
-        int thisCatappetite = getAppetite();
+        int thisCatappetite;
+
         Timer timer = new Timer(getName());
         MyTimerTask timerTask = new MyTimerTask();
         timer.scheduleAtFixedRate(timerTask, 0, 10 * 1000);
-        while (true) {
+       
+        do {
+            int countEat;
             try {
                 Thread.sleep(1000);
 
-                thisCatappetite = getAppetite();
-                System.out.println(String.format("Кот/кошка [%s] проголодался(-лась) на %d%% ", getName(), GET_MAX_SATIETY-thisCatappetite));
+                //  thisCatappetite = getAppetite();
+                countEat = plate.getCountEat();
+              
+
+                System.out.println("В тарелке " + countEat);
+                if (countEat == 0 ) {
+                    System.out.println("Недостаточно еды в миске, добавить еды? y/n");
+                    answer = scanner.nextLine();
+                    if (answer.equalsIgnoreCase("y")) {
+                        plate.run(getAppetite());
+                        countEat = plate.getCountEat();
+                        plate.setCountEat(countEat);
+
+
+                    } else {
+                        System.out.println("Покормите котэ!!!");
+
+                    }
+
+                }
+                System.out.println(String.format("Кот/кошка [%s] проголодался(-лась) на %d%% ", getName(),
+                        getGET_MAX_SATIETY()-getAppetite()));
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if (thisCatappetite == GET_MAX_SATIETY) {
-                System.out.println(String.format("Кот/кошка [%s] не голоден(-дна) %d%% ", getName(), thisCatappetite));
+            if (getAppetite() == GET_MAX_SATIETY) {
+                System.out.println(String.format("Кот/кошка [%s] не голоден(-дна) %d%% ", getName(),
+                        getAppetite()));
                 System.out.println("eat: false");
                 timer.cancel();
                 break;
             } else {
-                if (plate.getCountEat() == 100) {
-                    for (int i = getAppetite(); i <= GET_MAX_SATIETY; i++) {
+
+                if (plate.getCountEat() != 0) {
+                    countEat = plate.getCountEat();
+                    for (int i = getAppetite(); i <= getGET_MAX_SATIETY(); i++) {
                         setAppetite(i);
                         System.out.println(String.format("Кот/кошка [%s] поел(-а), сытость %d%% ", getName(), getAppetite()));
                         thisCatappetite = getAppetite();
-                    //    for (int j = plate.getCountEat(); j >= 0; j -= 10) {
-                            plate.setCountEat(100 - i);
+                        //    for (int j = plate.getCountEat(); j >= 0; j -= 10) {
 
+                        plate.setCountEat(countEat - thisCatappetite);
 
-                     //   }
+                  }
                         System.out.println("В тарелке осталось: " + plate.getCountEat() + " еды");
 
-                    }
-                } else if (plate.getCountEat() < thisCatappetite){
-                   System.out.println("Недостаточно еды в миске, добавить еды? y/n");
-                   answer = scanner.nextLine();
-                   if (answer.equalsIgnoreCase("y")) {
-                       plate.run(thisCatappetite);
-                       continue;
-                   } else {
-                       System.out.println("Покормите котэ!!!");
-                       continue;
 
-                   }
+                   // }
+                } else if (plate.getCountEat() < getAppetite()) {
+                    System.out.println("Недостаточно еды в миске, добавить еды? y/n");
+                    answer = scanner.nextLine();
+                    if (answer.equalsIgnoreCase("y")) {
+                        plate.run(getAppetite());
+
+
+                    } else {
+                        System.out.println("Покормите котэ!!!");
+
+                    }
+
+                 //   continue;
 
                 }
+
+
+
             }
 
             try {
@@ -133,7 +164,7 @@ public class Cat extends  Animals {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
+        } while (true);
     }
 
     public int getMAX_RUN_LENGTH() {

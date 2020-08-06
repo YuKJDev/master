@@ -11,10 +11,12 @@ public class Main {
 
             for (int i = 1; i < cats.length; i++) {
                 cats[i] = new Cat("Кошак №" + i);
+
                 cat = cats[i];
                 length = getData(cat.getMIN_RUN_LENGTH(), cat.getMAX_RUN_LENGTH());
                 height = getData(cat.getMIN_JUMP_HEIGTH(), cat.getMAX_JUMP_HEIGTH());
                 cat.setAppetite(getData(cat.getGET_MIN_SATIETY(), cat.getGET_MAX_SATIETY()));
+             //   cat.setAppetite(100);
                 cat.run(length);
                 cat.eat();
                 cat.jump(height);
@@ -58,7 +60,7 @@ public class Main {
     }
     static double getData (double min, double max) {
 
-        double diff = max - min;
+       // double diff = max - min;
         Random random = new Random();
         double i = random.nextDouble();
         i += min;
