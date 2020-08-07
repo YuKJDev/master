@@ -1,6 +1,3 @@
-import java.util.Scanner;
-import java.util.Timer;
-
 public class Cat extends  Animals {
     private  final int MAX_RUN_LENGTH = 200;
     private  final double MAX_JUMP_HEIGTH = 2;

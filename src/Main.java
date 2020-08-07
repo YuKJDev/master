@@ -19,7 +19,7 @@ public class Main {
                 length = getData(cat.getMIN_RUN_LENGTH(), cat.getMAX_RUN_LENGTH());
                 height = getData(cat.getMIN_JUMP_HEIGTH(), cat.getMAX_JUMP_HEIGTH());
                 cat.run(length);
-                cat.setHungry(true);
+              //  cat.setHungry(true);
                 doEat(cat, plate);
                 cat.jump(height);
 
