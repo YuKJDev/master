@@ -73,10 +73,4 @@ public class Dog extends Waterfowl {
 
     }
 
-    @Override
-    void eat() {
-
-    }
-
-
 }

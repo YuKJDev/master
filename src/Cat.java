@@ -7,15 +7,17 @@ public class Cat extends  Animals {
     private  final int MIN_RUN_LENGTH = -200;
     private  final double MIN_JUMP_HEIGTH = -3;
     private boolean hungry; // Если Истина, то кот голоден.
+    private int appetite;
 
     public void setHungry(boolean hungry) {
         this.hungry = hungry;
     }
 
 
-    public Cat(String name, boolean hungry) {
+    public Cat(String name, boolean hungry, int appetite) {
         super(name);
         this.hungry = hungry;
+        this.appetite = appetite;
 
     }
 
@@ -72,15 +74,10 @@ public class Cat extends  Animals {
 
 
     // покормим наших котов
-    @Override
-    public void eat() {
 
-          if (isHungry()) {
-              System.out.println(String.format("%s поел. ", getName()));
-              setHungry(false);
-          } else {
-              System.out.println(String.format("%s не голоден. ", getName()));
-        }
+    public void eat(Plate plate, int appetite) {
+
+        plate.descreaseFood(appetite);
 
     }
 
@@ -102,4 +99,7 @@ public class Cat extends  Animals {
     }
 
 
+    public int getAppetite() {
+        return appetite;
+    }
 }

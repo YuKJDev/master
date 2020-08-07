@@ -5,18 +5,21 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Plate plate = new Plate(0);
-        Cat[] cats = new Cat[100];
+        Plate plate;
+        Cat[] cats = new Cat[10];
         Cat cat;
         int length;
         double height;
        do{
+            plate = new Plate(0);
+
              for (int i = 1; i < cats.length; i++) {
-                cats[i] = new Cat("Кошак №" + i, true);
+                cats[i] = new Cat("Кошак №" + i, true, getData(0, 100));
                 cat = cats[i];
                 length = getData(cat.getMIN_RUN_LENGTH(), cat.getMAX_RUN_LENGTH());
                 height = getData(cat.getMIN_JUMP_HEIGTH(), cat.getMAX_JUMP_HEIGTH());
                 cat.run(length);
+                cat.setHungry(true);
                 doEat(cat, plate);
                 cat.jump(height);
 
@@ -46,8 +49,6 @@ public class Main {
         dog3.jump(-3);
         dog3.toSwim(5);
 
-
-
     }
     static int getData (int min, int max) {
 
@@ -67,37 +68,40 @@ public class Main {
     }
 
     static void doEat (Cat cat, Plate plate) {
-
-        int countEat = plate.getCount();
         String answer;
         Scanner scanner = new Scanner(System.in);
         do {
-            if (countEat > 0) {
-                if (cat.isHungry()) {
-                    cat.eat();
-                    countEat -= 10;
-                    plate.setCount(countEat);
-                    System.out.println(String.format("%d осталось еды в миске. ", plate.getCount()));
-                    break;
-                }
-            } else {
-                if (plate.getCount() == 0) {
-                    System.out.println("Недостаточно еды в миске, добавить еды? y/n");
-                    answer = scanner.nextLine();
-                    if (answer.equalsIgnoreCase("y")) {
-                        plate.setCount(100);
-                        countEat = plate.getCount();
+            if (cat.isHungry()) {
+            if (plate.getCount() > 0 & plate.getCount() >= cat.getAppetite()) {
 
-                    } else {
-                        System.out.println("Покормите котэ!");
-                        break;
+                    cat.eat(plate, cat.getAppetite());
+                    System.out.println(String.format("[%s] поел ", cat.getName()));
+                    System.out.println(String.format("%s осталось еды в миске. ", plate.info()));
+                    cat.setHungry(false);
+                    System.out.println(String.format("[%s] не голоден ", cat.getName()));
+                    break;
+
+                } else {
+                    if (plate.getCount() < cat.getAppetite() || plate.getCount() == 0) {
+                        System.out.println("Недостаточно еды в миске, добавить еды? y/n");
+                        answer = scanner.nextLine();
+                        cat.setHungry(true);
+                        System.out.println(String.format("[%s] голоден ", cat.getName()));
+
+                        if (answer.equalsIgnoreCase("y")) {
+                            plate.setCount(100);
+
+                        } else {
+                            System.out.println("Покормите котэ!");
+                          //  break;
+                        }
                     }
+
                 }
+
             }
         } while (true);
 
     }
-
-
 
 }

@@ -1,14 +1,24 @@
 public class Plate {
-private int count;
+private int food;
   public int getCount() {
-        return count;
+        return food;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setCount(int food) {
+        this.food = food;
     }
 
-    public Plate(int count) {
-        this.count = count;
+    public Plate(int food) {
+        this.food = food;
     }
+    public  void descreaseFood (int count) {
+      this.food -= count;
+
+    }
+    public String info () {
+      String info;
+      info = "Еда: " + food;
+      return  info;
+    }
+
 }

@@ -14,5 +14,5 @@ abstract class Animals {
 
     abstract void run(int length);
     abstract void jump(double height);
-    abstract void eat();
+
     }
