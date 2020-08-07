@@ -1,15 +1,14 @@
 public class Cat extends  Animals {
-    private  final int MAX_RUN_LENGTH = 200;
-    private  final double MAX_JUMP_HEIGTH = 2;
-    private  final int MIN_RUN_LENGTH = -200;
-    private  final double MIN_JUMP_HEIGTH = -3;
+    private final int MAX_RUN_LENGTH = 200;
+    private final double MAX_JUMP_HEIGTH = 2;
+    private final int MIN_RUN_LENGTH = -200;
+    private final double MIN_JUMP_HEIGTH = -3;
     private boolean hungry; // Если Истина, то кот голоден.
     private int appetite;
 
     public void setHungry(boolean hungry) {
         this.hungry = hungry;
     }
-
 
     public Cat(String name, boolean hungry, int appetite) {
         super(name);
@@ -44,7 +43,6 @@ public class Cat extends  Animals {
 
     }
 
-
     @Override
     void jump(double height) {
         if (height >= 0 && height <= MAX_JUMP_HEIGTH) {
@@ -69,11 +67,9 @@ public class Cat extends  Animals {
 
     }
 
-
     // покормим наших котов
 
     public void eat(Plate plate, int appetite) {
-
         plate.descreaseFood(appetite);
 
     }
@@ -86,7 +82,6 @@ public class Cat extends  Animals {
         return MAX_JUMP_HEIGTH;
     }
 
-
     public int getMIN_RUN_LENGTH() {
         return MIN_RUN_LENGTH;
     }
@@ -94,7 +89,6 @@ public class Cat extends  Animals {
     public double getMIN_JUMP_HEIGTH() {
         return MIN_JUMP_HEIGTH;
     }
-
 
     public int getAppetite() {
         return appetite;

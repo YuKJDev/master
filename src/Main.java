@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,7 +18,6 @@ public class Main {
                 length = getData(cat.getMIN_RUN_LENGTH(), cat.getMAX_RUN_LENGTH());
                 height = getData(cat.getMIN_JUMP_HEIGTH(), cat.getMAX_JUMP_HEIGTH());
                 cat.run(length);
-              //  cat.setHungry(true);
                 doEat(cat, plate);
                 cat.jump(height);
 
@@ -50,6 +48,7 @@ public class Main {
         dog3.toSwim(5);
 
     }
+
     static int getData (int min, int max) {
 
         int diff = max - min;
@@ -58,6 +57,7 @@ public class Main {
         i += min;
         return i;
     }
+
     static double getData (double min, double max) {
 
         double diff = max - min;
@@ -83,20 +83,19 @@ public class Main {
 
                 } else {
                     if (plate.getCount() < cat.getAppetite() || plate.getCount() == 0) {
-                        System.out.println("Недостаточно еды в миске, добавить еды? y/n");
-                        answer = scanner.nextLine();
-                        cat.setHungry(true);
-                        System.out.println(String.format("[%s] голоден ", cat.getName()));
+                            System.out.println("Недостаточно еды в миске, добавить еды? y/n");
+                            answer = scanner.nextLine();
+                            cat.setHungry(true);
+                            System.out.println(String.format("[%s] голоден ", cat.getName()));
 
-                        if (answer.equalsIgnoreCase("y")) {
+                   if (answer.equalsIgnoreCase("y")) {
                             plate.setCount(100);
                             System.out.println(String.format("Тарелка наполнена + %d ", plate.getCount()));
-
 
                         } else {
                                      System.out.println("Покормите котэ!");
                                }
-                    }
+                   }
 
                 }
 
