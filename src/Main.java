@@ -75,7 +75,7 @@ public class Main {
             if (plate.getCount() > 0 & plate.getCount() >= cat.getAppetite()) {
 
                     cat.eat(plate, cat.getAppetite());
-                    System.out.println(String.format("[%s] поел ", cat.getName()));
+                    System.out.println(String.format("[%s] поел [%d] пищи", cat.getName(), cat.getAppetite()));
                     System.out.println(String.format("%s осталось еды в миске. ", plate.info()));
                     cat.setHungry(false);
                     System.out.println(String.format("[%s] не голоден ", cat.getName()));
@@ -90,11 +90,12 @@ public class Main {
 
                         if (answer.equalsIgnoreCase("y")) {
                             plate.setCount(100);
+                            System.out.println(String.format("Тарелка наполнена + %d ", plate.getCount()));
+
 
                         } else {
-                            System.out.println("Покормите котэ!");
-                          //  break;
-                        }
+                                     System.out.println("Покормите котэ!");
+                               }
                     }
 
                 }
