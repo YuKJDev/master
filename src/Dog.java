@@ -1,4 +1,4 @@
-public class Dog extends Animals {
+public class Dog extends Waterfowl {
     private  int MAX_RUN_LENGTH = 500;
     private final int MAX_SWIM_LENGTH = 10;
     private final double MAX_JUMP_HEIGTH = 0.5;
@@ -8,7 +8,7 @@ public class Dog extends Animals {
         this.breed = breed;
     }
 
-    public String getBreed() {
+    private String getBreed() {
         return breed;
     }
 
@@ -38,7 +38,7 @@ public class Dog extends Animals {
     }
 
     @Override
-    void swim(int length) {
+    void toSwim(int length) {
         if ((length >= 0) && (length <= MAX_SWIM_LENGTH)) {
             System.out.println(String.format("Собака [%s] плывет ", getName()));
             System.out.println("swim: true");
@@ -72,4 +72,11 @@ public class Dog extends Animals {
 
 
     }
+
+    @Override
+    void eat() {
+
+    }
+
+
 }
